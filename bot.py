@@ -10,9 +10,11 @@ import google.generativeai as genai
 from docx import Document
 
 # 1. SOZLAMALAR
-BOT_TOKEN = "8506218606:AAEP-Ps83bGSbDZ1GU_WyxM0eaI77nYfeOk"
-GEMINI_API_KEY = "AIzaSyDfXLc4nisnnbtwpGkIYRP-SggjPfQPV90"
+import os
 
+# Render'dagi o'zgaruvchilardan o'qib olish
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 # transport='rest' parametritini majburiy kiritamiz
 genai.configure(api_key=GEMINI_API_KEY, transport='rest')
 
@@ -82,4 +84,5 @@ async def main():
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
+
     asyncio.run(main())
